@@ -1,0 +1,17 @@
+.container{
+
+}
+.navBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+.center li{
+    margin: 0 10px;
+}
