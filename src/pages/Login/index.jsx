@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 
+import { Link, useNavigate } from "react-router-dom";
 import { api } from '../../services/api'
 
 import * as yup from "yup";
 import { ErrorMessage, Formik, Form, Field } from "formik";
-import "./style.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import "./style.css";
+import Button from '@mui/material/Button';
+import {Container, Box, } from '@mui/material';
 
 function Login(){
   const [token, setToken] = useState();
@@ -50,7 +52,7 @@ function Login(){
   });
 
   return (
-    <div className="container">
+    <Container component="main" maxWidth="xs">
       <h1>Login</h1>
       <Formik
         initialValues={{}}
@@ -80,12 +82,10 @@ function Login(){
             <div>
                 <p>Ainda não é cadastrado? Cadastre-se <Link to={"/register"}>Aqui</Link></p>
             </div>
-          <button className="button" type="submit">
-            Login
-          </button>
+            <Button variant="contained" type="submit">Login</Button>
         </Form>
       </Formik>
-    </div>
+    </Container>
   );
 }
 export default Login;

@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header'
-
+import Navbar from '../../components/Navbar'
+import Product from '../../components/Product';
+import Sale from '../../components/Sale';
 
 function Home(){
     const navigate = useNavigate();
@@ -10,17 +11,12 @@ function Home(){
         setUser(JSON.parse(localStorage.getItem('userAuth')));
     }, []);
 
-    function Loggout(){
-        localStorage.clear();
-        console.log("Deslogado, limpou tudo :)");
-        navigate('/', { replace: true })
-    }
-
     return (
         <div>
-            <Header/>
+            <Navbar/>
+            <Sale/>
+            <Product/>
             <h1>Bem vindo(a) {user}!</h1>
-            <button onClick={Loggout}>Sair</button>
         </div>
     )
 }
