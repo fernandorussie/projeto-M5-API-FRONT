@@ -29,7 +29,11 @@ export default function AccountMenu() {
   const handleLogout = () => {
     localStorage.clear();
     console.log("Deslogado, limpou tudo :)");
-    navigate('/', { replace: true })};
+    navigate('/', { replace: true })
+  };
+
+  const userAuth = JSON.parse(localStorage.getItem('userAuth'));
+
 
   return (
     <React.Fragment>
@@ -82,11 +86,8 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Perfil
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Minha conta
+        <MenuItem onClick={handleClose} >
+          <Avatar /> {userAuth}
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
@@ -95,7 +96,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Adicionar outra conta
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} >
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>

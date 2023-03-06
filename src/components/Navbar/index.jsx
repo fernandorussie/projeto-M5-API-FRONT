@@ -24,7 +24,7 @@ import { createTheme } from '@mui/material/styles';
 const pages = [
     {
         display: 'Promoção',
-        path: "/promocao"
+        path: "/sales"
     },
     {
         display: 'Pedido',
@@ -36,14 +36,14 @@ const pages = [
     }
 ];
 
-const theme = createTheme({
-  palette: {
-    neutral: {
-      main: '#212121',
-      contrastText: '#fff',
-    }
-  }
-})
+// const theme = createTheme({
+//   palette: {
+//     neutral: {
+//       main: '#212121',
+//       contrastText: '#fff',
+//     }
+//   }
+// })
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -65,35 +65,12 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-const settings = [
-    {
-        display:'Perfil',
-        function:""
-    }, 
-    {
-        display:'Conta',
-        function:""
-    }, 
-    {
-        display:'Painel',
-        function:""
-    },
-    {
-        display:'Sair',
-        function: function Loggout(){
-            localStorage.clear();
-            console.log("Deslogado, limpou tudo :)");
-            navigate('/', { replace: true })
-        }
-        
-    }
-];
   return (
-    <AppBar position="static" theme={theme} color='neutral'>
+    <AppBar position="static" color='neutral'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Logo src={logo} alt="" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
-          {/* <AdbIcon  /> */}
+          
           <Typography
             variant="h6"
             noWrap
@@ -183,36 +160,11 @@ const settings = [
           <Box sx={{ flexGrow: 0, display: "flex", justifyContent: "center",
          alignItems: "center"}}>
             <AccountMenu/>
-            {/* <Tooltip title="Abrir configurações">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar/>
-              </IconButton>
-            </Tooltip> */}
+            
             <Tooltip title="Abrir carrinho de compras" sx={{margin: "0 15px"}}>
                 <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon>
             </Tooltip>
-            {/* <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((item, index) => (
-                <MenuItem key={index} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" onClick={item.function}>{item.display}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
+            
           </Box>
         </Toolbar>
       </Container>

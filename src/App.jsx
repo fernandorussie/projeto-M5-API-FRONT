@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { blue, pink } from '@mui/material/colors'
 
 import "./App.css";
 import GlobalStyle from "./styles/globalStyles";
@@ -10,19 +11,40 @@ import { Outlet } from 'react-router-dom';
 function App() {
   const theme = createTheme({
     palette: {
+      primary: {
+        main: '#df2020',
+        dark: '#9c1616',
+        light: '#e54c4c',
+        contrastText: '#fff',
+      },
+      secondary: {
+          main: '#212245',
+          dark:'#171730',
+          light: '#4d4e6a',
+          contrastText: '#fff',
+      },
       neutral: {
         main: '#212121',
         contrastText: '#fff',
+      },
+      typography: {
+        fontFamily: [
+          'Anton',
+          'RocknRoll One',
+          'sans-serif'
+        ].join(',')
       }
     }
   })
   return (
     <div>
-      <GlobalStyle/>
-      <CssBaseline enableColorScheme={true} />
-      <Container maxWidth="xl">
-        <Outlet/>
-      </Container>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle/>
+        <CssBaseline enableColorScheme={true} />
+        <Container maxWidth disableGutters={true}>
+          <Outlet/>
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }

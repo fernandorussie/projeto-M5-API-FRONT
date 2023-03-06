@@ -18,13 +18,10 @@ function Sale() {
 
   return (
         <div>
-            <Box display={"flex"} justifyContent={"space-around"} alignItems={"center"}>
-                <Box width={"50%"}>
-                    <h3>Um jeito fácil de comer hamburguer</h3>
-                    <Typography fontSize={25}>
-                    <h1><Span>Está com fome?</Span> Apenas espere a comida na <Span>sua porta!</Span></h1>
-
-                    </Typography>
+            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                <Box width={"40%"} ml={10} pr={5} >
+                    <Typography fontFamily='Anton' variant='h5' fontWeight={400}>Um jeito fácil de comer hamburguer</Typography>
+                    <Typography fontFamily='Anton' variant='h2' fontWeight={400}><Span>Está com fome?</Span> Apenas espere <Span><br></br>a comida na sua porta!</Span></Typography>
                 </Box>
                 <Box width={"50%"}>
                     <Banner src={ImageBanner} alt="" />
