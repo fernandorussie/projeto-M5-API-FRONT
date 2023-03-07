@@ -24,7 +24,7 @@ import { createTheme } from '@mui/material/styles';
 const pages = [
     {
         display: 'Promoção',
-        path: "/sales"
+        path: "#sales"
     },
     {
         display: 'Pedido',

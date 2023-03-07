@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import { Link, useNavigate } from "react-router-dom";
-import { api } from '../../services/api'
+import  {api}  from '../../services/api'
 
 import * as yup from "yup";
 import { ErrorMessage, Formik, Form, Field } from "formik";
@@ -21,12 +21,12 @@ function Login(){
     })
     .then((response) => {
       const validation = response.data.validation
-      const result = response.data.results[0].email_users
-      // console.log(result);
+      // const result = response.data.results[0].email_users
+      console.log(response);
 
       if(validation){
         localStorage.setItem('tokenAuth', validation);
-        localStorage.setItem('userAuth', JSON.stringify(result));
+        localStorage.setItem('userAuth', JSON.stringify(response.data.results[0].email_users));
         navigate('/home', { replace: true })
         // if(token){
         //   // alert("Usuário logado com sucesso!");

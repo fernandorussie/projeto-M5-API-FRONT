@@ -7,6 +7,7 @@ import { blue, pink } from '@mui/material/colors'
 import "./App.css";
 import GlobalStyle from "./styles/globalStyles";
 import { Outlet } from 'react-router-dom';
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   const theme = createTheme({
@@ -42,7 +43,9 @@ function App() {
         <GlobalStyle/>
         <CssBaseline enableColorScheme={true} />
         <Container maxWidth disableGutters={true}>
-          <Outlet/>
+          <CartProvider>
+            <Outlet/>
+          </CartProvider>
         </Container>
       </ThemeProvider>
     </div>

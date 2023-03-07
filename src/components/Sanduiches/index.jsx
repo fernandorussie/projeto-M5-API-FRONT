@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { api } from '../../services/api';
 
 import Box from '@mui/material/Box';
@@ -11,27 +11,37 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import { Img } from './style';
+import { CartContext } from './../../contexts/CartContext';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: 'center', 
     color: theme.palette.text.secondary,
   }));
   
 
 const Product = () => {
-
+    const {helloWorld} = useContext(CartContext)
+    const [carrinho, setCarrinho] = useState([]);
     const [product, setProduct] = useState([]);
+    console.log(helloWorld)
+
     useEffect(() => {
         api.get('/sanduiches').then((result) => {
             const sanduiches = result.data
             setProduct(sanduiches)
-            console.log(product)
+            // console.log(product)
         })
         
     }, []);
+
+    function handleAddToCart(nome, preco, imagem){ 
+        const item = { nome, preco, imagem}
+        setCarrinho([...carrinho, item])
+    }
+    console.log(carrinho);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection:'column'}}>
@@ -49,7 +59,7 @@ const Product = () => {
                         </Box>
                         <Box sx={{display: 'flex', justifyContent:'space-around', alignItems: 'center',}}>
                             <Typography fontSize={18} fontFamily='RocknRoll One' fontWeight={700} color='primary'>R$ {item.preco_sanduiche}</Typography>
-                            <IconButton color="primary" aria-label="add to shopping cart">
+                            <IconButton color="primary" aria-label="add to shopping cart" onClick={() => handleAddToCart(item.nome_sanduiche, item.preco_sanduiche, item.imagem_sanduiche)}>
                                 <AddShoppingCartIcon fontSize='large' />
                             </IconButton>
                         </Box>
