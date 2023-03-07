@@ -28,6 +28,10 @@ function App() {
         main: '#212121',
         contrastText: '#fff',
       },
+      mustard:{
+        main: '#FFDB58',
+        contrastText: '#fff',
+      },
       typography: {
         fontFamily: [
           'Anton',

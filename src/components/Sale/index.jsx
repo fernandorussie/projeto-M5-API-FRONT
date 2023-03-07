@@ -18,7 +18,7 @@ function Sale() {
 
   return (
         <div>
-            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+            <Box sx={{display:'flex', justifyContent:'space-between', alignItems:'center', backgroundColor: "mustard.main"}} >
                 <Box width={"40%"} ml={10} pr={5} >
                     <Typography fontFamily='Anton' variant='h5' fontWeight={400}>Um jeito fácil de comer hamburguer</Typography>
                     <Typography fontFamily='Anton' variant='h2' fontWeight={400}><Span>Está com fome?</Span> Apenas espere <Span><br></br>a comida na sua porta!</Span></Typography>
