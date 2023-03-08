@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 function Cart() {
-  const {carrinho, setCarrinho} = useContext(CartContext);
+  const {carrinho, setCarrinho, increment, decrement} = useContext(CartContext);
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0);
 
@@ -18,12 +18,13 @@ function Cart() {
         {carrinho.map((item, index) => {
           return(
             <Box key={index}>
+              <img src={item.imagem} alt="" />
               {item.nome}
               {item.preco}
               <Box>
-              <Button onClick={()=>{setCount(count +1)}}>+</Button>
+              <Button onClick={() => {increment(item.id)}}>+</Button>
               <p>{count}</p>
-              <Button>-</Button>
+              <Button onClick={() => {decrement(item.id)}}>-</Button>
               </Box>
               
             </Box>

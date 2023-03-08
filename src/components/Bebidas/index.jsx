@@ -41,8 +41,7 @@ const Product = () => {
         const item = { nome, preco, imagem}
         setCarrinho([...carrinho, item])
     }
-    console.log(carrinho);
-
+    
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection:'column'}}>
 

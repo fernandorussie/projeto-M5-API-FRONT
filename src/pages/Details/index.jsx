@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
-import {Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate, useParams } from 'react-router-dom';
 
 // import { Container } from './styles';
 
@@ -14,13 +13,13 @@ function Details() {
     useEffect(() => {
         function getProduct(){
             if(id){
-                const res = products[0];
+                const lista = [products[0]]
+                console.log(lista[0])
+                const data = lista[0].filter(item => item.cod_sanduiche == id
+                )
+                    console.log(data, "details")
+                    setProduto(data)
                 
-                const data = res
-                // .filter(item => item.cod_sanduiche == id
-                //     )
-                //     // console.log(data)
-                //     setProduto(data)
             }
         }; 
  

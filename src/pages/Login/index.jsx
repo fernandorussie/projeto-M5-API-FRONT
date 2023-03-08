@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import { Link, useNavigate } from "react-router-dom";
 import  {api}  from '../../services/api'
@@ -11,7 +11,6 @@ import Button from '@mui/material/Button';
 import {Container, Box, } from '@mui/material';
 
 function Login(){
-  const [token, setToken] = useState();
   const navigate = useNavigate();
 
   const handleLogin = (values) => {

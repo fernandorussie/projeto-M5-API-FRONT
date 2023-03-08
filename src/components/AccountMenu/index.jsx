@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import Avatar from '../Avatar'
+// import Avatar from '../Avatar'
 
 import { useNavigate } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}/>
+            {/* <Avatar sx={{ width: 32, height: 32 }}/> */}
           </IconButton>
         </Tooltip>
       </Box>
@@ -87,7 +87,7 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose} >
-          <Avatar /> {userAuth}
+          {/* <Avatar /> {userAuth} */}
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
