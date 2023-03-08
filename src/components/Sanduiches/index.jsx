@@ -23,6 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
   
 
 const Product = () => {
+    
     const {helloWorld} = useContext(CartContext)
     const [carrinho, setCarrinho] = useState([]);
     const [product, setProduct] = useState([]);
