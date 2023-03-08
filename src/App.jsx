@@ -7,7 +7,8 @@ import { blue, pink } from '@mui/material/colors'
 import "./App.css";
 import GlobalStyle from "./styles/globalStyles";
 import { Outlet } from 'react-router-dom';
-
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import { CartProvider } from "./contexts/CartContext";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       },
       neutral: {
         main: '#212121',
+        light: '#fff',
         contrastText: '#fff',
       },
       mustard:{
@@ -49,7 +51,9 @@ function App() {
         <CssBaseline enableColorScheme={true} />
         <Container maxWidth disableGutters={true}>
           <CartProvider>
+            <Navbar/>
             <Outlet/>
+            <Footer/>
           </CartProvider>
         </Container>
       </ThemeProvider>

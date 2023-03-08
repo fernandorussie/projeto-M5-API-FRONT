@@ -8,18 +8,13 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {NavLink, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/icons/burguer.png'
 import AccountMenu from '../AccountMenu';
 import { Logo } from './style'
-import { grey } from '@mui/material/colors';
-import { createTheme } from '@mui/material/styles';
-
+import CountCart from '../CountCart'
 
 const pages = [
     {
@@ -36,20 +31,11 @@ const pages = [
     }
 ];
 
-// const theme = createTheme({
-//   palette: {
-//     neutral: {
-//       main: '#212121',
-//       contrastText: '#fff',
-//     }
-//   }
-// })
-
 function ResponsiveAppBar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -66,28 +52,30 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" color='neutral'>
+    <AppBar position="fixed" color='neutral'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Logo src={logo} alt="" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
+          <NavLink to={'/home'}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              DevBurguer
+            </Typography>
+          </NavLink>
           
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            DevBurguer
-          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -118,11 +106,15 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((item) => (
-               <MenuItem key={item} onClick={handleCloseNavMenu}>
-               <Typography textAlign="center" href={item.path}>{item.display}</Typography>
-             </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">PROMOÇÃO</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">PEDIDO</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">CONTATO</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -144,26 +136,21 @@ function ResponsiveAppBar() {
             DevBurguer
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((item, index) => (
-                
-            <Button
-                key={index}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              href={item.path}>
-                {item.display}
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>PROMOÇÃO
             </Button>
-                
-            ))}
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>PEDIDO
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>CONTATO
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex", justifyContent: "center",
          alignItems: "center"}}>
             <AccountMenu/>
             
-            <Tooltip title="Abrir carrinho de compras" sx={{margin: "0 15px"}}>
-                <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon>
-            </Tooltip>
+            <NavLink to='/cart' sx={{margin: "0 15px"}}>
+              <CountCart/>
+            </NavLink>
             
           </Box>
         </Toolbar>
