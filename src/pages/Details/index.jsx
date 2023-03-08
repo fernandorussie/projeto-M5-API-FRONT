@@ -16,10 +16,11 @@ function Details() {
             if(id){
                 const res = products[0];
                 
-                const data = res.filter(item => item.cod_sanduiche == id
-                )
-                // console.log(data)
-                setProduto(data)
+                const data = res
+                // .filter(item => item.cod_sanduiche == id
+                //     )
+                //     // console.log(data)
+                //     setProduto(data)
             }
         }; 
  
