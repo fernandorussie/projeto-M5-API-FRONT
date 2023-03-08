@@ -56,7 +56,7 @@ const Product = () => {
                             <Img
                             src={item.imagem_sanduiche} 
                             title={item.nome_sanduiche} />
-                            <Typography fontSize={25} fontWeight={700} fontFamily='RocknRoll One' sx={{ display: 'flex', justifyContent: 'center', margin: 5}}>{item.nome_sanduiche}</Typography>
+                            <Typography fontSize={25} fontWeight={700} fontFamily='RocknRoll One' sx={{ display: 'flex', justifyContent: 'center', margin:'10px 0'}}>{item.nome_sanduiche}</Typography>
                         </Box>
                         <Box sx={{display: 'flex', justifyContent:'space-around', alignItems: 'center',}}>
                             <Typography fontSize={18} fontFamily='RocknRoll One' fontWeight={700} color='primary'>R$ {item.preco_sanduiche}</Typography>

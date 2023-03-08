@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar'
 import Product from '../../components/Sanduiches';
 import Sale from '../../components/Sale';
-import Tabs from '../../components/Tabs'
+import Tabs from '../../components/Tabs';
+import Footer from '../../components/Footer';
+
 function Home(){
     const navigate = useNavigate();
     const [user, setUser] = useState();
@@ -17,7 +19,8 @@ function Home(){
             <Sale id='sales'/>
             {/* <Product/> */}
             <Tabs id='tabs'/>
-            <h1>Bem vindo(a) {user}!</h1>
+            {/* <h1>Bem vindo(a) {user}!</h1> */}
+            <Footer/>
         </div>
     )
 }
