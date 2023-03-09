@@ -37,7 +37,7 @@ function Cart() {
       "valor_total": total,
       "status_pedido": 1,
       "data_pedido": today.toLocaleDateString()
-    }).then((resp) => console.log(resp))
+    }).then((resp) => {console.log(resp), setCart([])})
     .catch(error => console.log(error))
   }
     if(cart.length === 0){
