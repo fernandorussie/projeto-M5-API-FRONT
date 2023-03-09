@@ -40,8 +40,7 @@ function Cart() {
       "data_pedido": today.toLocaleDateString()
     }).then((resp) => {
       console.log(resp)
-      setCart([]) 
-      navigate('/home', { replace: true })
+      setCart([])
     })
     .catch(error => console.log(error))
   }
