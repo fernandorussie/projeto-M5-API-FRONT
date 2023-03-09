@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { CartContext } from '../../contexts/CartContext';
-
+import { useNavigate } from "react-router-dom";
 import {api} from '../../services/api'
 import PaymentsIcon from '@mui/icons-material/Payments';
 
@@ -14,6 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import * as C from './style'
 
 function Cart() {
+  const navigate = useNavigate();
   const {carrinho, setCarrinho, increment, decrement, remove, total, getTotal, itemNome} = useContext(CartContext);
   const [cart, setCart] = useState([]);
   const [order, setOrder] = useState([])
@@ -37,7 +38,7 @@ function Cart() {
       "valor_total": total,
       "status_pedido": 1,
       "data_pedido": today.toLocaleDateString()
-    }).then((resp) => {console.log(resp), setCart([])})
+    }).then((resp) => {console.log(resp), setCart([]), navigate('/home', { replace: true })})
     .catch(error => console.log(error))
   }
     if(cart.length === 0){
