@@ -14,10 +14,10 @@ function Details() {
         function getProduct(){
             if(id){
                 const lista = [products[0]]
-                console.log(lista[0])
+                // console.log(lista[0])
                 const data = lista[0].filter(item => item.cod_sanduiche == id
                 )
-                    console.log(data, "details")
+                    // console.log(data, "details")
                     setProduto(data)
                 
             }

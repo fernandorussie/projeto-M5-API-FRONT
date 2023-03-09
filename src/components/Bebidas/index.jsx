@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 
 import { Img } from './style';
 import { CartContext } from './../../contexts/CartContext';
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -23,9 +24,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Product = () => {
 
-    const {carrinho, setCarrinho} = useContext(CartContext)
-
+    const {handleAddToCart} = useContext(CartContext)
     const [product, setProduct] = useState([]);
+
     useEffect(() => {
         async function getProduct(){
             await api.get('/bebidas').then((result) => {
@@ -36,11 +37,6 @@ const Product = () => {
         }
         getProduct()
     }, []);
-
-    function handleAddToCart(nome, preco, imagem){ 
-        const item = { nome, preco, imagem}
-        setCarrinho([...carrinho, item])
-    }
     
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection:'column'}}>
@@ -54,11 +50,13 @@ const Product = () => {
                             <Img
                             src={item.imagem_bebida} 
                             title={item.nome_bebida} />
+
                             <Typography fontSize={25} fontWeight={700} fontFamily='RocknRoll One' sx={{ display: 'flex', justifyContent: 'center', margin:'10px 0'}}>{item.nome_bebida}</Typography>
                         </Box>
+
                         <Box sx={{display: 'flex', justifyContent:'space-around', alignItems: 'center',}}>
                             <Typography fontSize={18} fontFamily='RocknRoll One' fontWeight={700} color='primary'>R$ {item.preco_bebida}</Typography>
-                            <IconButton color="primary" aria-label="add to shopping cart" onClick={() => handleAddToCart(item.nome_bebida, item.preco_bebida, item.imagem_bebida)}>
+                            <IconButton color="primary" aria-label="add to shopping cart" onClick={() => handleAddToCart(item.cod_bebida, item.nome_bebida, item.preco_bebida, item.imagem_bebida, item.descricao_bebida, item.qt_bebida)}>
                                 <AddShoppingCartIcon fontSize='large' />
                             </IconButton>
                         </Box>

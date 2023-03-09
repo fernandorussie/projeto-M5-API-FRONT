@@ -49,7 +49,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle/>
         <CssBaseline enableColorScheme={true} />
-        <Container maxWidth disableGutters={true}>
+        <Container maxWidth disableGutters={true} >
           <CartProvider>
             <Navbar/>
             <Outlet/>

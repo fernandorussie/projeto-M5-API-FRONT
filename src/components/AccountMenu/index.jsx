@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-// import Avatar from '@mui/material/Avatar';
+import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -28,11 +28,11 @@ export default function AccountMenu() {
 
   const handleLogout = () => {
     localStorage.clear();
-    console.log("Deslogado, limpou tudo :)");
+    // console.log("Deslogado, limpou tudo :)");
     navigate('/', { replace: true })
   };
 
-  const userAuth = JSON.parse(localStorage.getItem('userAuth'));
+  const userName = JSON.parse(localStorage.getItem('userName'));
 
 
   return (
@@ -47,6 +47,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
+            <Avatar src="/broken-image.jpg" />
             {/* <Avatar sx={{ width: 32, height: 32 }}/> */}
           </IconButton>
         </Tooltip>
@@ -87,7 +88,7 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose} >
-          {/* <Avatar /> {userAuth} */}
+          {userName}
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>

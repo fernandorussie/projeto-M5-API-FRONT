@@ -5,7 +5,9 @@ import { api } from '../../services/api';
 export const CartProvider = ({children}) => {
     const [carrinho, setCarrinho] = useState([]);
     const [products, setProducts] = useState([]);
-    
+    const [total, setTotal] = useState(0);
+    const [itemNome, setItemNome] = useState([]);
+
     useEffect(() => {
         async function getProducts(){
             await api.get('/sanduiches').then((result) => {
@@ -20,50 +22,72 @@ export const CartProvider = ({children}) => {
             })
         }
         getProducts()
-        
     }, []);
-
 
     // console.log(products[0], "Sanduiche - cartContext")
 
-    function handleAddToCart(id, nome, preco, imagem, descricao){ 
-        // const data = products[0].filter(item => {
-        //     return item.cod_produto === id
-        // })
-        // setCarrinho([...carrinho, data])
-        // console.log(carrinho, "carrinho")
+    function handleAddToCart(id, nome, preco, imagem, descricao, quant){ 
+        const data = { id, nome, preco, imagem, descricao, quant}
+        // console.log(data)
+        const check = carrinho.every(item => {
+            return item.id !== id
+        }) 
+        if(check){
+            setCarrinho([...carrinho, data])
+            
+            carrinho.forEach(item => { 
+                if(item !== ""){
+                    setItemNome([...itemNome, item.nome, item.quant])
+                }
+            })
+            console.log(itemNome)
+        }else{
+            alert('Produto já adicionado no carrinho')
+        }
+        
+    } 
 
-        // const check = carrinho.every(item => {
-        //     return item.cod_produto !== id
-        // })
-        // console.log(check)
-        const data = { id, nome, preco, imagem, descricao}
-
-        setCarrinho([...carrinho, data])
-    }
-
-    function increment(id){
-        const count = 1
+    const increment = (id) => {
         carrinho.forEach(item => {
-            if(item.cod_produto === id){
-                count === 1 ? count = 1 : count -=1
+            if(item.id == id){
+                item.quant += 1;
+            }  
+        })
+        setCarrinho(carrinho)
+        getTotal()
+    } 
+
+    const decrement = (id) => {
+        carrinho.forEach(item => { 
+            if(item.id == id){ 
+                item.quant == 1 ? item.quant = 1 : item.quant -=1
+            }
+            // console.log(item.quant) 
+        })
+        setCarrinho(carrinho)
+        getTotal()
+    }  
+     
+    const remove = (id) => {
+        carrinho.forEach((item, index) => {
+            if(item.id === id){ 
+                carrinho.splice(index, 1)
             }
         })
         setCarrinho(carrinho)
+        getTotal()
     }
 
-    function decrement(id){
-        carrinho.forEach(item => {
-            if(item.cod_produto === id){
-                count += 1;
-            }
-        })   
-        setCarrinho(carrinho) 
+    const getTotal = () => {
+        const tot = carrinho.reduce((prev, item) => {
+            return prev + (item.preco * item.quant)
+        },0)
+        setTotal(tot)
     }
-
+ 
     return (
-        <CartContext.Provider value={{carrinho, setCarrinho, products, handleAddToCart, increment, decrement}}>
+        <CartContext.Provider value={{carrinho, products, setCarrinho, handleAddToCart, increment, decrement, remove, total, getTotal, itemNome}}>
         {children}
         </CartContext.Provider>
     )
-}
+} 
