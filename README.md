@@ -15,3 +15,17 @@ Criamos um Delivery de Hamburgueria onde o usuário pode se cadastrar, fazer log
 ⇨ Botão para adicionar o produto ao carrinho de compras;<br>
 ⇨ Aumentar/Diminuir a quantidade de produtos no carrinho de compras;<br>
 ⇨ Valor total de itens que tem no carrinho.<br>
+
+## Autores
+
+- [@Fernando](https://www.github.com/fernandorussie)
+- [@Millena](https://www.github.com/millenakeli)
+- [@Felipe](https://www.github.com/afelipinas)
+- [@Kayllane](https://www.github.com/kayllane29)
+- [@Max](https://www.github.com/sabino05)
+
+## Referência do Back-end
+Projeto que tivemos de inspiração para a criação do nosso
+
+ - [Video aula no youtube](https://www.youtube.com/watch?v=yEpiT-N2DUc&list=PLygIEirBzJi4lTC-5nzfhEyxuKq2y1uiR)
+ - [Yuri Marcon](https://github.com/yurimarcon/api-node-sqlite)
